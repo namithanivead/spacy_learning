@@ -6,19 +6,6 @@ import spacy
 from spacy.pipeline import EntityRecognizer
 warnings.filterwarnings("ignore")
 
-
-@register_call("whoIs")
-def who_is(session, query):
-    try:
-        return wikipedia.summary(query)
-    except Exception:
-        for new_query in wikipedia.search(query):
-            try:
-                return wikipedia.summary(new_query)
-            except Exception:
-                pass
-    return "I don't know about "+query
-
 nlp_ner = spacy.load('/Users/namithav/demo_chatbot/ner')
 nlp_en = spacy.load('en_core_web_sm')
 assert nlp_en.vocab != nlp_ner.vocab
