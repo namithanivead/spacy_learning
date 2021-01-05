@@ -1,0 +1,5 @@
+{% block %}
+    {% client %} (?P<query>.*(incident|outage|servicenow).*){% endclient %}
+    {% response %}{% call process_text: %query %}{% endresponse %}
+{% endblock %}
+
